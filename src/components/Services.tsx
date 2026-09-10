@@ -1,6 +1,6 @@
 ﻿"use client";
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { fadeInScale } from "@/lib/animation";
 
 const services = [
@@ -15,13 +15,15 @@ const services = [
 function ServiceCard({ icon, title, desc, index }: { icon: string; title: string; desc: string; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <motion.div
       ref={ref}
       className="group bg-gray-900 border border-gray-800 rounded-2xl p-8 hover:border-yellow-400/50 transition-colors duration-300"
       variants={fadeInScale}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
+      initial={shouldReduceMotion ? false : "hidden"}
+      animate={shouldReduceMotion || isInView ? "visible" : "hidden"}
       custom={index}
     >
       <div className="text-4xl mb-4">{icon}</div>

@@ -1,6 +1,6 @@
 ﻿"use client";
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 
 const stats = [
   { value: "15+", label: "Лет опыта" },
@@ -11,6 +11,7 @@ const stats = [
 
 export default function ParallaxSection() {
   const ref = useRef<HTMLElement>(null);
+  const shouldReduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.4, 1, 1, 0.4]);
@@ -19,7 +20,7 @@ export default function ParallaxSection() {
     <section ref={ref} className="relative py-24 px-6 overflow-hidden bg-gray-950">
       <motion.div
         className="absolute inset-0 bg-[url(https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=2072)] bg-cover bg-center"
-        style={{ y: bgY, opacity }}
+        style={shouldReduceMotion ? { opacity: 1 } : { y: bgY, opacity }}
       />
       <div className="absolute inset-0 bg-gray-950/85 backdrop-blur-sm" />
       <div className="relative max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
@@ -27,8 +28,8 @@ export default function ParallaxSection() {
           <motion.div
             key={stat.label}
             className="flex flex-col items-center gap-2"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 40 }}
+            whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, type: "spring", bounce: 0.3 }}
           >
