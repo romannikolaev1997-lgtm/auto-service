@@ -3,10 +3,10 @@ import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 
 const stats = [
-  { value: "15+", label: "Лет опыта" },
-  { value: "5000+", label: "Клиентов" },
-  { value: "100%", label: "Гарантия качества" },
-  { value: "24/7", label: "Техподдержка" },
+  { value: "12", label: "Лет опыта" },
+  { value: "3200+", label: "Авто обслужено" },
+  { value: "12", label: "Месяцев гарантии" },
+  { value: "09–20", label: "Пн–Сб" },
 ];
 
 export default function ParallaxSection() {

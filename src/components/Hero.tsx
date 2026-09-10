@@ -13,7 +13,7 @@ export default function Hero() {
           Профессиональный <span className="text-yellow-400">автосервис</span>
         </motion.h1>
         <motion.p className="mb-8 text-base text-gray-300 sm:mb-10 sm:text-lg md:text-xl" variants={fadeInUp} custom={1}>
-          Диагностика, ремонт и обслуживание автомобилей любых марок. Гарантия качества на все виды работ.
+          Диагностика, ремонт и обслуживание автомобилей любых марок. Гарантия до 12 месяцев на выполненные работы.
         </motion.p>
         <motion.a
           href="#contact"

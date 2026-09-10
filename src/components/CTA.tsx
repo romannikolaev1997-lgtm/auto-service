@@ -1,5 +1,5 @@
 ﻿"use client";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { fadeInUp } from "@/lib/animation";
 
@@ -7,6 +7,7 @@ export default function CTA() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   const shouldReduceMotion = useReducedMotion();
+  const [showDemoNotice, setShowDemoNotice] = useState(false);
 
   return (
     <section id="contact" ref={sectionRef} className="relative bg-black py-24 px-6">
@@ -16,13 +17,21 @@ export default function CTA() {
           Готовы к <span className="text-yellow-400">качественному</span> обслуживанию?
         </motion.h2>
         <motion.p className="text-gray-400 text-lg mb-10" variants={fadeInUp} custom={1}>
-          Оставьте заявку и мы перезвоним вам в течение 15 минут для уточнения деталей
+          Оставьте заявку — в рабочее время мы свяжемся с вами в течение 30 минут.
         </motion.p>
-        <motion.div className="flex flex-col sm:flex-row gap-4 justify-center" variants={fadeInUp} custom={2}>
-          <input type="text" placeholder="Ваше имя" className="bg-gray-900 border border-gray-700 rounded-full px-6 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-yellow-400 transition-colors" aria-label="Ваше имя" />
-          <input type="tel" placeholder="Номер телефона" className="bg-gray-900 border border-gray-700 rounded-full px-6 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-yellow-400 transition-colors" aria-label="Номер телефона" />
+        <motion.form
+          className="flex flex-col sm:flex-row gap-4 justify-center"
+          variants={fadeInUp}
+          custom={2}
+          onSubmit={(event) => {
+            event.preventDefault();
+            setShowDemoNotice(true);
+          }}
+        >
+          <input name="name" type="text" placeholder="Ваше имя" required className="bg-gray-900 border border-gray-700 rounded-full px-6 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-yellow-400 transition-colors" aria-label="Ваше имя" />
+          <input name="phone" type="tel" placeholder="Номер телефона" required className="bg-gray-900 border border-gray-700 rounded-full px-6 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-yellow-400 transition-colors" aria-label="Номер телефона" />
           <motion.button
-            type="button"
+            type="submit"
             className="relative overflow-hidden bg-yellow-400 text-black px-8 py-4 rounded-full text-lg font-bold whitespace-nowrap shadow-lg shadow-yellow-400/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-200 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
             whileHover={shouldReduceMotion ? undefined : { scale: 1.05 }}
             whileTap={shouldReduceMotion ? undefined : { scale: 0.95 }}
@@ -40,7 +49,8 @@ export default function CTA() {
           >
             Записаться
           </motion.button>
-        </motion.div>
+        </motion.form>
+        {showDemoNotice && <p className="mt-4 text-sm text-gray-400" role="status">Демо-форма: данные не отправляются.</p>}
       </motion.div>
     </section>
   );

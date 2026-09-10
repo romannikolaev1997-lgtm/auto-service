@@ -13,8 +13,9 @@ export default function Footer() {
     <footer className="bg-gray-950 border-t border-gray-800 py-16 px-6">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
         <div>
-          <h3 className="text-2xl font-bold text-white mb-4">Auto<span className="text-yellow-400">Service</span></h3>
-          <p className="text-gray-400 text-sm leading-relaxed">Профессиональный автосервис с 15-летним опытом. Гарантия качества и прозрачные цены.</p>
+          <h3 className="text-2xl font-bold text-white mb-4">Пятый <span className="text-yellow-400">цилиндр</span></h3>
+          <p className="text-gray-400 text-sm leading-relaxed">Диагностика, ремонт и ТО автомобилей без лишних обещаний.</p>
+          <p className="mt-3 text-gray-400 text-sm leading-relaxed">Самара, пр-т Механиков, 18<br />Пн–Сб, 09:00–20:00</p>
         </div>
         {Object.entries(links).map(([title, items]) => (
           <div key={title}>
@@ -38,7 +39,7 @@ export default function Footer() {
         ))}
       </div>
       <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
-        &copy; {new Date().getFullYear()} AutoService. Все права защищены.
+        &copy; {new Date().getFullYear()} Пятый цилиндр. Все права защищены.
       </div>
     </footer>
   );

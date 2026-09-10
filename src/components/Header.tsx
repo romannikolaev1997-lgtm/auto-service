@@ -5,6 +5,10 @@ import { motion, useScroll, useSpring } from "framer-motion";
 
 const focusRing = "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black";
 
+const brandName = "Пятый цилиндр";
+const phone = "+7 (999) 555-18-42";
+const phoneHref = "tel:+79995551842";
+
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { scrollYProgress } = useScroll();
@@ -15,11 +19,11 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4 sm:px-6">
-        <a href="/" className={`text-xl font-bold text-white sm:text-2xl ${focusRing}`}>Auto<span className="text-yellow-400">Service</span></a>
+        <a href="/" className={`text-xl font-bold text-white sm:text-2xl ${focusRing}`}>{brandName}</a>
         <nav className="hidden md:flex items-center gap-8" aria-label="Основная навигация">
           <a href="#services" className={`text-gray-300 hover:text-yellow-400 transition-colors text-sm uppercase tracking-wider ${focusRing}`}>Услуги</a>
           <a href="#contact" className={`text-gray-300 hover:text-yellow-400 transition-colors text-sm uppercase tracking-wider ${focusRing}`}>Контакты</a>
-          <a href="tel:+79000000000" className={`text-white font-semibold ${focusRing}`}>+7 (900) 000-00-00</a>
+          <a href={phoneHref} className={`text-white font-semibold ${focusRing}`}>{phone}</a>
         </nav>
         <button
           type="button"
@@ -40,7 +44,7 @@ export default function Header() {
           <div className="mx-auto flex max-w-7xl flex-col gap-1">
             <a href="#services" onClick={closeMenu} className="rounded px-3 py-3 text-sm uppercase tracking-wider text-gray-300 transition-colors hover:text-yellow-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400">Услуги</a>
             <a href="#contact" onClick={closeMenu} className="rounded px-3 py-3 text-sm uppercase tracking-wider text-gray-300 transition-colors hover:text-yellow-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400">Контакты</a>
-            <a href="tel:+79000000000" className="rounded px-3 py-3 font-semibold text-white transition-colors hover:text-yellow-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400">+7 (900) 000-00-00</a>
+            <a href={phoneHref} className="rounded px-3 py-3 font-semibold text-white transition-colors hover:text-yellow-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400">{phone}</a>
           </div>
         </nav>
       )}
