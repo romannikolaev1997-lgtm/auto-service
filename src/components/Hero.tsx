@@ -9,7 +9,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[url(https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?q=80&w=2070)] bg-cover bg-center bg-scroll opacity-40 md:bg-fixed" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
       <motion.div className="relative z-10 w-full max-w-3xl text-center" initial="hidden" animate="visible">
-        <motion.h1 className="mb-6 text-4xl font-bold leading-tight text-white sm:text-5xl md:text-7xl" variants={fadeInUp} custom={0}>
+        <motion.h1 className="mb-6 text-[28px] font-bold leading-tight tracking-tight text-white min-[390px]:text-4xl sm:text-5xl md:text-7xl" variants={fadeInUp} custom={0}>
           Профессиональный <span className="text-yellow-400">автосервис</span>
         </motion.h1>
         <motion.p className="mb-8 text-base text-gray-300 sm:mb-10 sm:text-lg md:text-xl" variants={fadeInUp} custom={1}>
