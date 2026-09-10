@@ -12,6 +12,9 @@ build/
 
 # misc
 .DS_Store
+Thumbs.db
+.vscode/
+.idea/
 _tmp
 test_script.js
 src/test.txt
